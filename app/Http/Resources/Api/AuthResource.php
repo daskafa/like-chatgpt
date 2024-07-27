@@ -15,7 +15,8 @@ class AuthResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
+            'device_name' => $this->device->name,
+            'created_at' => $this->created_at->format('d-m-Y H:i:s'),
         ];
     }
 }

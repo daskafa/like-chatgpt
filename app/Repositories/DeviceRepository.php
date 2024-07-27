@@ -16,4 +16,9 @@ class DeviceRepository
     {
         return self::query()->create($data);
     }
+
+    public static function updateDeviceName(string $deviceUuid, string $deviceName): void
+    {
+        self::query()->where('uuid', $deviceUuid)->update(['name' => $deviceName]);
+    }
 }
