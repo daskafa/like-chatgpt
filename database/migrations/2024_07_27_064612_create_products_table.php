@@ -12,10 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->mediumIncrements('id');
-            $table->string('title');
+            $table->tinyIncrements('id');
+            $table->string('name');
             $table->smallInteger('chat_credit')->unsigned();
-            $table->timestamps();
         });
     }
 

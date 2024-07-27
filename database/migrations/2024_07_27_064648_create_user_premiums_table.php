@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_premiums', function (Blueprint $table) {
             $table->id();
             $table->uuid('device_uuid')->unique();
-            $table->unsignedMediumInteger('product_id');
+            $table->unsignedTinyInteger('product_id');
             $table->smallInteger('remaining_chat_credit')->unsigned();
             $table->string('receipt_token')->unique();
             $table->boolean('is_active');
