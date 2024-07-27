@@ -2,9 +2,10 @@
 
 use App\Constants\Constants;
 use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 if (!function_exists('responseJson')) {
-    function responseJson(string $type, mixed $data = null, string $message = null, int $status = 200): JsonResponse
+    function responseJson(string $type, mixed $data = null, string $message = null, int $status = Response::HTTP_OK): JsonResponse
     {
         return match ($type) {
             'data' => response()->json([
@@ -19,7 +20,7 @@ if (!function_exists('responseJson')) {
             ], $status),
             default => response()->json([
                 'message' => Constants::GENERAL_EXCEPTION_ERROR_MESSAGE
-            ], 500)
+            ], Response::HTTP_INTERNAL_SERVER_ERROR)
         };
     }
 }
@@ -30,6 +31,6 @@ if (!function_exists('exceptionResponseJson')) {
         return response()->json([
             'message' => $message,
             'exceptionMessage' => $exceptionMessage
-        ], 500);
+        ], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }

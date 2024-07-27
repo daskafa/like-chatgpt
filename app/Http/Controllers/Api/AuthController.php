@@ -9,6 +9,7 @@ use App\Repositories\UserRepository;
 use App\Services\Api\AuthService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
 {
@@ -30,6 +31,9 @@ class AuthController extends Controller
                 data: [
                     'is_premium' => false,
                     'user' => AuthResource::make(UserRepository::getUserByDeviceUuid($deviceUUID)),
+                    'token' => UserRepository::createPlainTextToken(
+                        UserRepository::getUserByDeviceUuid($deviceUUID)
+                    ),
                 ],
             );
         } catch (\Exception $exception) {
@@ -37,7 +41,7 @@ class AuthController extends Controller
 
             return response()->json([
                 'message' => $exception->getMessage(),
-            ], 500);
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 }
