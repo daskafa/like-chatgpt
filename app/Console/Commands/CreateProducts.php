@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Product;
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 
 class CreateProducts extends Command
 {
@@ -34,14 +35,17 @@ class CreateProducts extends Command
 
         $productsArray = [
             [
+                'uuid' => Str::uuid(),
                 'name' => 'Package 1',
                 'chat_credit' => 10,
             ],
             [
+                'uuid' => Str::uuid(),
                 'name' => 'Package 2',
                 'chat_credit' => 20,
             ],
             [
+                'uuid' => Str::uuid(),
                 'name' => 'Package 3',
                 'chat_credit' => 30,
             ],

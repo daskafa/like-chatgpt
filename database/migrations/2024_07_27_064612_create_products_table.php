@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->tinyIncrements('id');
+            $table->uuid()->unique();
             $table->string('name');
             $table->smallInteger('chat_credit')->unsigned();
         });

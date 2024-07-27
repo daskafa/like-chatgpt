@@ -30,9 +30,9 @@ class AuthController extends Controller
                 type: 'data',
                 data: [
                     'is_premium' => false,
-                    'user' => AuthResource::make(UserRepository::getUserByDeviceUuid($deviceUUID)),
+                    'user' => AuthResource::make(UserRepository::getByDeviceUuid($deviceUUID)),
                     'token' => UserRepository::createPlainTextToken(
-                        UserRepository::getUserByDeviceUuid($deviceUUID)
+                        UserRepository::getByDeviceUuid($deviceUUID)
                     ),
                 ],
             );

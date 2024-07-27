@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserPremium extends Model
 {
-    use HasFactory;
+    protected $table = 'user_premiums';
+
+    protected $fillable = [
+        'device_uuid',
+        'product_id',
+        'remaining_chat_credit',
+        'receipt_token',
+        'is_active',
+    ];
 }

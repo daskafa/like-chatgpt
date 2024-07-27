@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('user_premiums', function (Blueprint $table) {
             $table->id();
-            $table->uuid('device_uuid')->unique();
-            $table->unsignedTinyInteger('product_id');
+            $table->uuid('device_uuid');
+            $table->uuid('product_id');
             $table->smallInteger('remaining_chat_credit')->unsigned();
-            $table->string('receipt_token')->unique();
+            $table->longText('receipt_token');
             $table->boolean('is_active');
             $table->timestamps();
 
             $table->foreign('device_uuid')->references('uuid')->on('devices');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('uuid')->on('products');
         });
     }
 

@@ -24,7 +24,7 @@ class UserRepository
         return self::query()->create($data);
     }
 
-    public static function getUserByDeviceUuid(string $deviceUuid): User
+    public static function getByDeviceUuid(string $deviceUuid): User
     {
         return self::query()->where('device_uuid', $deviceUuid)->firstOrFail();
     }
