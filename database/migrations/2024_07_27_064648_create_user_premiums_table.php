@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_premiums', function (Blueprint $table) {
             $table->id();
             $table->uuid('device_uuid')->unique();
-            $table->mediumIncrements('product_id');
+            $table->unsignedMediumInteger('product_id');
             $table->smallInteger('remaining_chat_credit')->unsigned();
             $table->string('receipt_token')->unique();
             $table->boolean('is_active');
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_premia');
+        Schema::dropIfExists('user_premiums');
     }
 };

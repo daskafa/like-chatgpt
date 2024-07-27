@@ -13,13 +13,9 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->uuid('device_uuid')->unique()->nullable();
-
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->string('email')->unique()->nullable();
+            $table->string('password')->nullable();
             $table->timestamps();
-
-            $table->foreign('device_uuid')->references('uuid')->on('devices');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
