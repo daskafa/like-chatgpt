@@ -53,7 +53,7 @@ class SubscriptionTest extends TestCase
             ]);
         } else {
             $response->assertStatus(200)->assertJson(fn ($json) => [
-                $json->where('message', 'Purchase transaction failed')
+                $json->where('message', 'Purchase transaction failed.')
             ]);
         }
     }
@@ -86,7 +86,7 @@ class SubscriptionTest extends TestCase
         ]);
 
         $response->assertStatus(200)->assertJson(fn ($json) => [
-            $json->where('message', 'You already have an active subscription')
+            $json->where('message', 'You already have an active subscription.')
         ]);
 
         $this->assertDatabaseCount('user_premiums', 1);

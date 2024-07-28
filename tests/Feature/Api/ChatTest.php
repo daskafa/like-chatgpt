@@ -42,7 +42,7 @@ class ChatTest extends TestCase
 
         $response->assertStatus(200)->assertJson(fn ($json) => [
             $json->has('data', fn ($json) => [
-                $json->where('bot_message', 'Bot message'),
+                $json->where('bot_message', 'Bot message.'),
                 $json->etc(),
             ]),
         ]);
@@ -83,7 +83,7 @@ class ChatTest extends TestCase
 
         $response2->assertStatus(200)->assertJson(fn ($json) => [
             $json->has('data', fn ($json) => [
-                $json->where('bot_message', 'Bot message'),
+                $json->where('bot_message', 'Bot message.'),
                 $json->etc(),
             ]),
         ]);
@@ -116,7 +116,7 @@ class ChatTest extends TestCase
         ]);
 
         $response->assertStatus(200)->assertJson(fn ($json) => [
-            $json->where('message', 'You have run out of chat credit'),
+            $json->where('message', 'You have run out of chat credit.'),
         ]);
     }
 }

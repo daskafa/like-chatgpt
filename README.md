@@ -22,22 +22,32 @@ cd like-chatgpt
 composer install
 ```
 
-#### 5- .env dosyasını oluşturun ve docker-compose.yaml dosyasında belirlediğiniz bilgileri dosyasınıza ekleyin. (Örneğin veritabanı bilgilerinizi)
+#### 5- .env dosyasını oluşturun ve belirlediğiniz bilgileri .env'ye ekleyin. (Örneğin veritabanı bilgilerinizi)
 
-#### 6- Docker container'larınızı Sail ile ayağa kaldırın.
+#### 6- Docker container'larınızı Sail ile ayağa kaldırın. (Docker'ı kapatıp açmanız gerekebilir)
 ```
 ./vendor/bin/sail up -d
 ```
 
-### 7- Veritabanı tablolarını oluşturun.
+### 7- App key oluşturun.
+```
+./vendor/bin/sail php artisan key:generate
+```
+
+### 8- Veritabanı tablolarını oluşturun.
 ```
 ./vendor/bin/sail php artisan migrate
 ```
 
-#### 8- Son olarak Command'ları çalıştırın.
+#### 9- Son olarak Command'ları çalıştırın.
 ```
 ./vendor/bin/sail php artisan app:create-products 
 ./vendor/bin/sail php artisan app:create-admin-user
+```
+
+#### Testleri çalıştırmak için:
+```
+./vendor/bin/sail test
 ```
 
 *Hepsi bu kadar. Teşekkürler.*
