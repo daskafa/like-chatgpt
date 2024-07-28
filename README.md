@@ -1,4 +1,4 @@
-## Fenix Case
+## Like ChatGPT
 
 
 Proje Sail ile dockerize edilmiştir. Aşağıdaki adımları uygulayarak projeyi çalıştırabilirsiniz.
@@ -7,12 +7,12 @@ Proje Sail ile dockerize edilmiştir. Aşağıdaki adımları uygulayarak projey
 
 #### 1- Projeyi bilgisayarınıza klonlayın.
 ```
-git clone git@github.com:daskafa/fenix-case.git
+git clone git@github.com:daskafa/like-chatgpt.git
 ```
 
 #### 2- Projeye ait docker-compose.yaml dosyasının bulunduğu dizine gidin.
 ```
-cd fenix-case
+cd like-chatgpt
 ```
 
 #### 3- Gerektiği durumda docker-compose.yaml dosyasını düzenleyin.
