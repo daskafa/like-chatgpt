@@ -16,6 +16,11 @@ class AuthResource extends JsonResource
     {
         return [
             'device_name' => $this->device->name,
+            'premium_information' => [
+                'remaining_active_chat_credit' => $this->whenLoaded('premiums', function () {
+                    return $this->premiums->where('is_active', true)->first()?->remaining_chat_credit;
+                }),
+            ],
             'created_at' => $this->created_at->format('d-m-Y H:i:s'),
         ];
     }

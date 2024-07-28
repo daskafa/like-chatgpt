@@ -26,7 +26,7 @@ class UserRepository
 
     public static function getByDeviceUuid(string $deviceUuid): User
     {
-        return self::query()->where('device_uuid', $deviceUuid)->firstOrFail();
+        return self::query()->where('device_uuid', $deviceUuid)->with('premiums')->firstOrFail();
     }
 
     public static function createPlainTextToken(User $user): string

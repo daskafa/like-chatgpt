@@ -32,4 +32,32 @@ class UserPremiumRepository
             ->where('is_active', true)
             ->exists();
     }
+
+    public static function getRemainingChatCredit(User $user): int
+    {
+        return self::query()
+            ->where('device_uuid', $user->device_uuid)
+            ->where('is_active', true)
+            ->value('remaining_chat_credit');
+    }
+
+    public static function decrementChatCredit(User $user): void
+    {
+        self::query()
+            ->where('device_uuid', $user->device_uuid)
+            ->where('is_active', true)
+            ->decrement('remaining_chat_credit');
+
+        if (self::getRemainingChatCredit($user) === 0) {
+            self::deactivate($user);
+        }
+    }
+
+    public static function deactivate(User $user): void
+    {
+        self::query()
+            ->where('device_uuid', $user->device_uuid)
+            ->where('is_active', true)
+            ->update(['is_active' => false]);
+    }
 }

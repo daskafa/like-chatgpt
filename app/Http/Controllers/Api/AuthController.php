@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Constants\Constants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\AuthRequest;
 use App\Http\Resources\Api\AuthResource;
@@ -11,7 +12,6 @@ use App\Repositories\UserRepository;
 use App\Services\Api\AuthService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
 {
@@ -45,9 +45,10 @@ class AuthController extends Controller
         } catch (\Exception $exception) {
             DB::rollBack();
 
-            return response()->json([
-                'message' => $exception->getMessage(),
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+            return exceptionResponseJson(
+                message: Constants::GENERAL_EXCEPTION_ERROR_MESSAGE,
+                exceptionMessage: $exception->getMessage(),
+            );
         }
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
@@ -47,5 +48,10 @@ class User extends Authenticatable
     public function device(): HasOne
     {
         return $this->hasOne(Device::class, 'uuid', 'device_uuid');
+    }
+
+    public function premiums(): HasMany
+    {
+        return $this->hasMany(UserPremium::class, 'device_uuid', 'device_uuid');
     }
 }
