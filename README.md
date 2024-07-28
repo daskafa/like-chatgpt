@@ -24,7 +24,7 @@ composer install
 
 #### 5- .env dosyasını oluşturun ve belirlediğiniz bilgileri .env'ye ekleyin. (Örneğin veritabanı bilgilerinizi)
 
-#### 6- Docker container'larınızı Sail ile ayağa kaldırın. (Docker'ı kapatıp açmanız gerekebilir)
+#### 6- Docker container'larınızı Sail ile ayağa kaldırın.
 ```
 ./vendor/bin/sail up -d
 ```
