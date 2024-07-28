@@ -7,7 +7,7 @@ Proje Sail ile dockerize edilmiştir. Aşağıdaki adımları uygulayarak projey
 
 #### 1- Projeyi bilgisayarınıza klonlayın.
 ```
-git clone git@github.com:daskafa/like-chatgpt.git
+git clone https://github.com/daskafa/like-chatgpt.git
 ```
 
 #### 2- Projeye ait docker-compose.yaml dosyasının bulunduğu dizine gidin.
@@ -16,16 +16,17 @@ cd like-chatgpt
 ```
 
 #### 3- Gerektiği durumda docker-compose.yaml dosyasını düzenleyin.
-#### 4- Docker container'larınızı Sail ile ayağa kaldırın.
+
+#### 4- Composer ile gerekli paketleri yükleyin.
 ```
-./vendor/bin/sail up -d
+composer install
 ```
 
 #### 5- .env dosyasını oluşturun ve docker-compose.yaml dosyasında belirlediğiniz bilgileri dosyasınıza ekleyin. (Örneğin veritabanı bilgilerinizi)
 
-#### 6- Composer ile gerekli paketleri yükleyin.
+#### 6- Docker container'larınızı Sail ile ayağa kaldırın.
 ```
-composer install
+./vendor/bin/sail up -d
 ```
 
 ### 7- Veritabanı tablolarını oluşturun.
