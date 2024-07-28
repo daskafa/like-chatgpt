@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\UserPremium;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 
 class UserPremiumRepository
 {
@@ -59,5 +60,10 @@ class UserPremiumRepository
             ->where('device_uuid', $user->device_uuid)
             ->where('is_active', true)
             ->update(['is_active' => false]);
+    }
+
+    public static function getAllUserPremiums(): Collection
+    {
+        return self::query()->get();
     }
 }

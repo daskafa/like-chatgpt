@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserPremium extends Model
 {
@@ -18,4 +19,9 @@ class UserPremium extends Model
         'receipt_token',
         'is_active',
     ];
+
+    public function device(): BelongsTo
+    {
+        return $this->belongsTo(Device::class, 'device_uuid', 'uuid');
+    }
 }
