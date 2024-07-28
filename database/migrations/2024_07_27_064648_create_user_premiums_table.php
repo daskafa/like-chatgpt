@@ -22,6 +22,8 @@ return new class extends Migration
 
             $table->foreign('device_uuid')->references('uuid')->on('devices');
             $table->foreign('product_id')->references('uuid')->on('products');
+
+            $table->index(['device_uuid', 'is_active']);
         });
     }
 

@@ -18,6 +18,9 @@ return new class extends Migration
             $table->text('bot_message');
             $table->text('user_message');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->index(['user_id', 'chat_id']);
         });
     }
 
