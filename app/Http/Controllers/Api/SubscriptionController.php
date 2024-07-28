@@ -17,14 +17,14 @@ class SubscriptionController extends Controller
         if (UserPremiumRepository::isActive(Auth::user())) {
             return responseJson(
                 type: 'message',
-                message: 'You already have an active subscription',
+                message: 'You already have an active subscription.',
             );
         }
 
         if (! $subscriptionService->checkPurchaseTransaction($request->get('product_id'), $request->get('receipt_token'))) {
             return responseJson(
                 type: 'message',
-                message: 'Purchase transaction failed',
+                message: 'Purchase transaction failed.',
             );
         }
 

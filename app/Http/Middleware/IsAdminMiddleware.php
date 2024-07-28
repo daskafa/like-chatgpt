@@ -15,7 +15,7 @@ class IsAdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (! auth()->check()) {
+        if (! auth()->check() || ! is_null(auth()->user()->device_uuid)) {
             return redirect('admin/login');
         }
 

@@ -27,7 +27,7 @@ class ChatController extends Controller
                 if ($checkAccess) {
                     return responseJson(
                         type: 'message',
-                        message: 'You do not have access to this chat',
+                        message: 'You do not have access to this chat.',
                     );
                 }
             }
@@ -35,7 +35,7 @@ class ChatController extends Controller
             if (! UserPremiumRepository::isActive($user)) {
                 return responseJson(
                     type: 'message',
-                    message: 'You need to have an active subscription to use this feature',
+                    message: 'You need to have an active subscription to use this feature.',
                 );
             }
 
@@ -44,11 +44,12 @@ class ChatController extends Controller
             if ($remainingChatCredit <= 0) {
                 return responseJson(
                     type: 'message',
-                    message: 'You have run out of chat credit',
+                    message: 'You have run out of chat credit.',
                 );
             }
 
             $createChat = $chatService->createChat($user, $request->get('message'));
+
             UserPremiumRepository::decrementChatCredit($user);
 
             DB::commit();

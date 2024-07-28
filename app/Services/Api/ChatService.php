@@ -44,6 +44,6 @@ class ChatService
 
     private function getBotMessage(): string
     {
-        return 'Bot message';
+        return 'Bot message.';
     }
 }
