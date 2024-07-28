@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         using: function () {
-            Route::middleware('api')
+            Route::middleware(['api', 'throttle:30,1'])
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
