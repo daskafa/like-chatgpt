@@ -49,7 +49,6 @@ class ChatController extends Controller
             }
 
             $createChat = $chatService->createChat($user, $request->get('message'));
-
             UserPremiumRepository::decrementChatCredit($user);
 
             DB::commit();
