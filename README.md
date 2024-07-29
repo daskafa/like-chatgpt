@@ -17,7 +17,7 @@ cd like-chatgpt
 
 #### 3- Gerektiği durumda docker-compose.yaml dosyasını düzenleyin.
 
-#### 4- Composer ile gerekli paketleri yükleyin.
+#### 4- Composer ile gerekli bağımlılıkları yükleyin.
 ```
 composer install
 ```
